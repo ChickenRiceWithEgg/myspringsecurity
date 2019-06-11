@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
+	<classPathEntry
+			location="C:/Users/Eplugger/.m2/repository/mysql/mysql-connector-java/5.0.7/mysql-connector-java-5.0.7.jar"/>
+
+	<context id="myspringsecurity" targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="UTF-8"/>
+		<property name="useMapperCommentGenerator" value="true"/>
+
+		<plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+		<!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+			<property name="suppressDate" value="true"/>
+		</commentGenerator>
+
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/myspringsecurity?useUnicode=true&amp;characterEncoding=UTF-8"
+						userId="root"
+						password="eplugger">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true"/>
+			<property name="useJSR310Types" value="true"/>
+		</javaTypeResolver>
+
+		<!-- 数据表对应的model层  -->
+		<javaModelGenerator targetPackage="com.xjw.myspringsecurity.entity" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="false"/>
+<!--			<property name="rootClass" value="com.eplugger.provincenet.entity.BusinessEntity"/>-->
+		</javaModelGenerator>
+
+		<!-- sql mapper 映射配置文件 -->
+		<sqlMapGenerator targetPackage="mapper/auto" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!-- mybatis3中的mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.xjw.myspringsecurity.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+
+		<table tableName="sys_group" enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false" enableSelectByPrimaryKey="true"
+			   enableUpdateByPrimaryKey="true"
+			   enableDeleteByPrimaryKey="true">
+<!--			<property name="rootInterface" value="com.xjw.myspringsecurity.dao.BaseMapper"/>-->
+			<domainObjectRenamingRule searchString="^Sys" replaceString=""/>
+		</table>
+		<table tableName="sys_right" enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false" enableSelectByPrimaryKey="true"
+			   enableUpdateByPrimaryKey="true"
+			   enableDeleteByPrimaryKey="true">
+			<!--			<property name="rootInterface" value="com.xjw.myspringsecurity.dao.BaseMapper"/>-->
+			<domainObjectRenamingRule searchString="^Sys" replaceString=""/>
+		</table>
+		<table tableName="sys_group_right" enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false" enableSelectByPrimaryKey="true"
+			   enableUpdateByPrimaryKey="true"
+			   enableDeleteByPrimaryKey="true">
+			<!--			<property name="rootInterface" value="com.xjw.myspringsecurity.dao.BaseMapper"/>-->
+			<domainObjectRenamingRule searchString="^Sys" replaceString=""/>
+		</table>
+		<table tableName="sys_user_group" enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false" enableSelectByPrimaryKey="true"
+			   enableUpdateByPrimaryKey="true"
+			   enableDeleteByPrimaryKey="true">
+			<!--			<property name="rootInterface" value="com.xjw.myspringsecurity.dao.BaseMapper"/>-->
+			<domainObjectRenamingRule searchString="^Sys" replaceString=""/>
+		</table>
+
+	</context>
+</generatorConfiguration>

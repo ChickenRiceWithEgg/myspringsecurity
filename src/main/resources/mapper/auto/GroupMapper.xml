@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xjw.myspringsecurity.dao.GroupMapper">
+  <resultMap id="BaseResultMap" type="com.xjw.myspringsecurity.entity.Group">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="display_name" jdbcType="VARCHAR" property="displayName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role_name, display_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xjw.myspringsecurity.entity.Group">
+    insert into sys_group (id, role_name, display_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xjw.myspringsecurity.entity.Group">
+    insert into sys_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="displayName != null">
+        display_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xjw.myspringsecurity.entity.Group">
+    update sys_group
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        display_name = #{displayName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xjw.myspringsecurity.entity.Group">
+    update sys_group
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      display_name = #{displayName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findGroupsOfUser" parameterType="java.lang.String" resultMap="com.xjw.myspringsecurity.entity.Group">
+    select g.* from sys_group g
+    left join sys_user_group ug on g.id = ug.group_id
+    left join sys_user u on u.id = ug.user_id
+    where u.username = #{username, jdbcType=VARCHAR};
+  </select>
+  
+  <select id="findGroupsOfRight" parameterType="java.lang.Integer" resultMap="com.xjw.myspringsecurity.entity.Group">
+    select g.* from sys_group g
+    left join sys_group_right gr on gr.group_id = g.id
+    where gr.right_id = #{rightId, jdbcType=INTEGER}
+  </select>
+</mapper>
