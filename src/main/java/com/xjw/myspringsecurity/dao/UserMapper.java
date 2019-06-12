@@ -17,5 +17,17 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
+    /**
+     * 手写的
+     * @return
+     */
     List<User> findAll();
+
+    /**
+     * 手写的
+     * @param username
+     * @return
+     */
+    List<User> findByUsername(String username);
+
 }

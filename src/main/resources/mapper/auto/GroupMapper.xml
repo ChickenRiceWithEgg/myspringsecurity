@@ -75,7 +75,6 @@
     left join sys_user u on u.id = ug.user_id
     where u.username = #{username, jdbcType=VARCHAR};
   </select>
-  
   <select id="findGroupsOfRight" parameterType="java.lang.Integer" resultMap="com.xjw.myspringsecurity.entity.Group">
     select g.* from sys_group g
     left join sys_group_right gr on gr.group_id = g.id

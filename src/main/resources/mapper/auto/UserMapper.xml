@@ -72,4 +72,7 @@
   <select id="findAll" parameterType="" resultMap="com.xjw.myspringsecurity.entity.User">
     select * from
   </select>
+  <select id="findByUsername" parameterType="java.lang.String" resultMap="com.xjw.myspringsecurity.entity.User">
+    select * from user where username = #{username, jdbcType=VARCHAR}
+  </select>
 </mapper>

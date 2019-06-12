@@ -17,7 +17,17 @@ public interface GroupMapper {
 
     int updateByPrimaryKey(Group record);
 
+    /**
+     * 手写的
+     * @param username
+     * @return
+     */
     List<Group> findGroupsOfUser(String username);
 
+    /**
+     * 手写的
+     * @param rightId
+     * @return
+     */
     List<Group> findGroupsOfRight(Integer rightId);
 }

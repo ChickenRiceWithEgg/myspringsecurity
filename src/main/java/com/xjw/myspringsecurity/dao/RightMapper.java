@@ -17,5 +17,10 @@ public interface RightMapper {
 
     int updateByPrimaryKey(Right record);
 
+    /**
+     * 这是手写的
+     * @param url
+     * @return
+     */
     List<Right> findByUrl(String url);
 }
