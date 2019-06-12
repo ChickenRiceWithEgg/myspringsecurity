@@ -1,11 +1,23 @@
 server:
   port: 8090
   servlet:
-    context-path: /myspringsecurity
-
+    context-path: /
+#    context-path: /myspringsecurity
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/myspringsecurity?characterEncoding=utf-8&serverTimezone=UTC&autoReconnect=true
     driver-class-name: com.mysql.jdbc.Driver
     data-username: root
     data-password: eplugger
+
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    check-template-location: true
+    cache: false
+
+mybatis:
+  type-aliases-package: com.xjw.myspringsecurity.dao
+  mapper-locations: classpath:mapper/**/*.xml

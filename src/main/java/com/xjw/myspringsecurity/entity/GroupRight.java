@@ -1,6 +1,6 @@
 package com.xjw.myspringsecurity.entity;
 
-public class GroupGight {
+public class GroupRight {
     private Integer id;
 
     private Integer groupId;

@@ -2,6 +2,7 @@ package com.xjw.myspringsecurity.service;
 
 import com.xjw.myspringsecurity.dao.RightMapper;
 import com.xjw.myspringsecurity.entity.Right;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,7 +14,8 @@ import javax.annotation.Resource;
 @Service
 public class RightServiceImpl implements RightService {
 
-    @Resource
+//    @Resource
+    @Autowired
     private RightMapper rightMapper;
 
     @Override

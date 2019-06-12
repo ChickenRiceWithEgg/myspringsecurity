@@ -1,17 +1,17 @@
 package com.xjw.myspringsecurity.dao;
 
-import com.xjw.myspringsecurity.entity.GroupGight;
+import com.xjw.myspringsecurity.entity.GroupRight;
 
 public interface GroupRightMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(GroupGight record);
+    int insert(GroupRight record);
 
-    int insertSelective(GroupGight record);
+    int insertSelective(GroupRight record);
 
-    GroupGight selectByPrimaryKey(Integer id);
+    GroupRight selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(GroupGight record);
+    int updateByPrimaryKeySelective(GroupRight record);
 
-    int updateByPrimaryKey(GroupGight record);
+    int updateByPrimaryKey(GroupRight record);
 }
